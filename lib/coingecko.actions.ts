@@ -30,9 +30,11 @@ export async function fetcher<T>(
   });
 
   if (!response.ok) {
-    const errorBody: CoinGeckoErrorBody = await response.json().catch(() => ({}));
-
-    throw new Error(`API Error: ${response.status}: ${errorBody.error || response.statusText} `);
+    const text = await response.text().catch(() => '');
+    console.error('CoinGecko URL:', url);
+    console.error('CoinGecko status:', response.status);
+    console.error('CoinGecko body:', text);
+    throw new Error(`CoinGecko ${response.status}: ${text || response.statusText}`);
   }
 
   return response.json();

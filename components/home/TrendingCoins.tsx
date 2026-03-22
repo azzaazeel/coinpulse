@@ -1,4 +1,3 @@
-import React from 'react'
 import { fetcher } from '@/lib/coingecko.actions';
 import { cn, formatCurrency, formatPercentage } from '@/lib/utils';
 import { TrendingDown, TrendingUp } from 'lucide-react';
@@ -54,7 +53,7 @@ const TrendingCoins = async () => {
     let trendingCoins;
 
     try {
-        trendingCoins = await fetcher<{ coins: TrendingCoin[] }>('/search/trending', undefined, 300); 
+        trendingCoins = await fetcher<{ coins: TrendingCoin[] }>('search/trending', undefined, 300); 
     } catch (error) {
         console.error('Error fetching trending coins:', error);
         return <TrendingCoinsFallback />;
