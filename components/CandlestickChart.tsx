@@ -34,7 +34,7 @@ const CandlestickChart = ({ children, data, coinId, height = 360, initialPeriod 
     }
 
     const handlePeriodChange = (newPeriod: Period) => {
-        if (newPeriod === initialPeriod) return;
+        if (newPeriod === period) return;
 
         startTransition(async () => {
             setPeriod(newPeriod);
